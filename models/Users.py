@@ -1,7 +1,7 @@
 from db import db
 from datetime import datetime
 from sqlalchemy import Integer, String, DateTime
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 class Users(db.Model):
     __tablename__ = "users"
@@ -13,3 +13,6 @@ class Users(db.Model):
     password: Mapped[str] = mapped_column(String(200), nullable=False)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
 
+    pruebas: Mapped[list["Pruebas"]] = relationship(back_populates="pruebas") # type: ignore
+
+    

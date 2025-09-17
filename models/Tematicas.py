@@ -11,3 +11,5 @@ class Tematicas(db.Model):
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
 
     preguntas: Mapped[list["Preguntas"]] = relationship(back_populates="tematicas") # type: ignore
+    pruebas: Mapped[list["Pruebas"]] = relationship(back_populates="pruebas") # type: ignore
+    
