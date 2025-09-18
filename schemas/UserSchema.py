@@ -1,5 +1,5 @@
 from db import ma
-from models import Users
+from models.Users import Users
 
 class UserSchema(ma.SQLAlchemySchema):
     class Meta:

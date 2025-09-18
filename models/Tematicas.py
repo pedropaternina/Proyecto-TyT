@@ -10,6 +10,6 @@ class Tematicas(db.Model):
     nombre_tematica: Mapped[str] = mapped_column(String(50), nullable=False)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
 
-    preguntas: Mapped[list["Preguntas"]] = relationship(back_populates="tematicas") # type: ignore
-    pruebas: Mapped[list["Pruebas"]] = relationship(back_populates="pruebas") # type: ignore
+    preguntas: Mapped[list["Preguntas"]] = relationship("Preguntas", back_populates="tematicas") # type: ignore
+    pruebas: Mapped[list["Pruebas"]] = relationship("Pruebas",back_populates="tematicas") # type: ignore
     

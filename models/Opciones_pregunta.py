@@ -12,5 +12,5 @@ class Opciones_pregunta(db.Model):
     es_correcta: Mapped[bool] =  mapped_column(Boolean, nullable=False)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
 
-    preguntas: Mapped["Preguntas"] = relationship(back_populates="preguntas") # type: ignore
-    respuestas_usuario_prueba: Mapped[list["Respuestas_usuario_prueba"]] = relationship(back_populates="respuestas_usuario_prueba") # type: ignore
+    preguntas: Mapped[list["Preguntas"]] = relationship("Preguntas", back_populates="opciones_pregunta") # type: ignore
+    respuestas_usuario_prueba: Mapped[list["Respuestas_usuario_prueba"]] = relationship("Respuestas_usuario_prueba", back_populates="opciones_pregunta") # type: ignore
