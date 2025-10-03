@@ -12,4 +12,4 @@ class Tematicas(db.Model):
 
     preguntas: Mapped[list["Preguntas"]] = relationship("Preguntas", back_populates="tematicas") # type: ignore
     pruebas: Mapped[list["Pruebas"]] = relationship("Pruebas",back_populates="tematicas") # type: ignore
-    
+

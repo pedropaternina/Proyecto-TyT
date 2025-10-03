@@ -1,6 +1,7 @@
 from db import ma
 from models import Opciones_pregunta
 from marshmallow_sqlalchemy.fields import Nested
+from marshmallow import fields, Schema
 
 class Opciones_preguntaSchema(ma.SQLAlchemySchema):
     class Meta:
@@ -14,3 +15,12 @@ class Opciones_preguntaSchema(ma.SQLAlchemySchema):
     
     preguntas = Nested("PreguntasSchema", dump_only=True)
     
+
+
+class Update_opciones_preguntaSchema(Schema):
+    class Meta:
+        fields = ("id_preguntas", "texto_opcion", "es_correcta")
+
+    id_preguntas = fields.Int(required=False)
+    texto_opcion = fields.Str(required=False)
+    es_correcta = fields.Bool(required=False)

@@ -32,9 +32,6 @@ def update_Usuario_By_Id(data: dict,id_user):
     user_schema = UserSchema()
     return user_schema.dump(user_consulta)
     
-    
-    
-
 
 def delete_User_By_Id(id):
     schema = UserSchema()
