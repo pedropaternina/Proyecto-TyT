@@ -9,6 +9,7 @@ class Opciones_preguntaSchema(ma.SQLAlchemySchema):
     
     id = ma.auto_field(dump_only=True)
     id_preguntas = ma.auto_field()
+    letra = ma.auto_field()
     texto_opcion = ma.auto_field()
     es_correcta = ma.auto_field()
     created_at = ma.auto_field(dump_only=True)
@@ -19,8 +20,9 @@ class Opciones_preguntaSchema(ma.SQLAlchemySchema):
 
 class Update_opciones_preguntaSchema(Schema):
     class Meta:
-        fields = ("id_preguntas", "texto_opcion", "es_correcta")
+        fields = ("id_preguntas", "letra","texto_opcion", "es_correcta")
 
+    letra = fields.Str(required=False)
     id_preguntas = fields.Int(required=False)
     texto_opcion = fields.Str(required=False)
     es_correcta = fields.Bool(required=False)

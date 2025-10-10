@@ -20,8 +20,8 @@ class PreguntasSchema(ma.SQLAlchemySchema):
 
 class UpdatePreguntasSchema(Schema):
     class Meta:
-        fields = ("contex","context_img","enunciado")
+        fields = ("context","context_img","enunciado")
 
     context = fields.Str(required=False)
-    context_img = fields.Str(required=False),
+    context_img = fields.Str(required=False)
     enunciado = fields.Str(required=False)

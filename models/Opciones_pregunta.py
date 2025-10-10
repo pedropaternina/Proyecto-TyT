@@ -8,6 +8,7 @@ class Opciones_pregunta(db.Model):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     id_preguntas: Mapped[int] = mapped_column(ForeignKey("preguntas.id"))
+    letra: Mapped[str] = mapped_column(String(100), nullable=False)
     texto_opcion: Mapped[str] = mapped_column(String(250), nullable=False)
     es_correcta: Mapped[bool] =  mapped_column(Boolean, nullable=False)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)

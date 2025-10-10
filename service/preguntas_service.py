@@ -42,7 +42,7 @@ def add_Preguntas(data: dict):
 def updatePreguntas(data: dict, id_pregunta):
     schema = UpdatePreguntasSchema()
     pregunta_update = schema.load(data)
-    pregunta_consulta = Preguntas.query.filter_by(id = id_pregunta).first
+    pregunta_consulta = Preguntas.query.filter_by(id = id_pregunta).first()
 
     if not pregunta_consulta:
         return {"error":"La pregunta con ese Id no existe"}, 404
@@ -64,4 +64,4 @@ def deletePreguntas(id_pregunta):
     
     db.session.delete(pregunta_consulta)
     db.session.commit()
-    return f"La pregunta ccon el id: {id_pregunta} ha sido eliminada exitosamente"
+    return f"La pregunta con el id: {id_pregunta} ha sido eliminada exitosamente"
