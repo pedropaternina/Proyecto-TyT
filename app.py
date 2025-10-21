@@ -5,6 +5,7 @@ from routes.users_routes import users_bp
 from routes.preguntas_routes import preguntas_bp
 from routes.tematicas_routes import tematicas_bp
 from routes.opciones_pregunta_routes import opciones_preguntas_bp
+from flask_cors import CORS
 def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
@@ -21,8 +22,10 @@ def create_app():
     app.register_blueprint(preguntas_bp, url_prefix="/preguntas")
     app.register_blueprint(tematicas_bp, url_prefix="/tematicas")
     app.register_blueprint(opciones_preguntas_bp, url_prefix="/opciones_preguntas")
-
+    
+    CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
     return app
+
 
 
 

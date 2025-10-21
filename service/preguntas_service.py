@@ -19,6 +19,15 @@ def get_Pregunta_Id(id_pregunta):
     
     return schema.dump(pregunta_consulta)
 
+def get_Pregunta_Tematica(id_tematica):
+    schema = PreguntasSchema(many=True)
+    pregunta_consula = Preguntas.query.filter_by(id_tematicas=id_tematica).all()
+
+    if not pregunta_consula:
+        return {"Error": "Las preguntas no existen"}
+    
+    return schema.dump(pregunta_consula)
+
 
 def add_Preguntas(data: dict):
     schema = PreguntasSchema()

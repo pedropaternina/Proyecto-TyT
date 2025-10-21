@@ -1,5 +1,5 @@
 from flask import Blueprint, request 
-from service.preguntas_service import get_Preguntas, add_Preguntas, get_Pregunta_Id, updatePreguntas, deletePreguntas
+from service.preguntas_service import get_Preguntas, add_Preguntas, get_Pregunta_Id, get_Pregunta_Tematica, updatePreguntas, deletePreguntas
 
 preguntas_bp = Blueprint("preguntas",__name__)
 
@@ -15,6 +15,11 @@ def add_preguntas():
 @preguntas_bp.route("/<int:id_pregunta>", methods=["GET"])
 def obtener_preguntas_id(id_pregunta):
     return get_Pregunta_Id(id_pregunta)
+
+
+@preguntas_bp.route("/tematica/<int:id_tematica>", methods=["GET"])
+def obtener_preguntas_tematica(id_tematica):
+    return get_Pregunta_Tematica(id_tematica)
 
 @preguntas_bp.route("/update/<int:id_pregunta>", methods=["POST"])
 def update_preguntas(id_pregunta):
