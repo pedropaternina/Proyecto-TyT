@@ -1,5 +1,5 @@
 from db import db
-from sqlalchemy import String, Integer, DateTime, ForeignKey
+from sqlalchemy import String, JSON ,Integer, DateTime, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from datetime import datetime
 
@@ -10,6 +10,7 @@ class Pruebas(db.Model):
     id_usuario: Mapped[int] = mapped_column(ForeignKey("users.id"))
     id_tematica: Mapped[int] = mapped_column(ForeignKey("tematicas.id"))
     puntuacion: Mapped[int] = mapped_column(Integer, nullable=False)
+    seleccion_usuario: Mapped[dict] = mapped_column(JSON, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
 
     usuario = relationship("Users", back_populates="pruebas") # type: ignore

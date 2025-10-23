@@ -17,6 +17,15 @@ def get_Opreguntas_Id(id_opreguntas):
     
     return schema.dump(op_consulta)
 
+def get_Opreguntas_Idpregunta(id_pregunta):
+    schema = Opciones_preguntaSchema(many=True)
+    op_consulta = Opciones_pregunta.query.filter_by(id_preguntas=id_pregunta).all()
+    if not op_consulta:
+        return {"error": "La opcion de pregunta no fue encontrada"}
+    
+    return schema.dump(op_consulta)
+
+
 def add_Opreguntas(data:dict):
     schema = Opciones_preguntaSchema()
     op_pregunta_data = schema.dump(data)
